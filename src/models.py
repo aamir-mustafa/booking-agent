@@ -50,7 +50,16 @@ class BookingState(BaseModel):
         if self.preferences:
             lines.append(f"Preferences: {', '.join(self.preferences)}")
         if self.search_results:
-            lines.append(f"Search results: {len(self.search_results)} hotels found")
+            lines.append(f"Search results ({len(self.search_results)} hotels):")
+            for i, h in enumerate(self.search_results[:5], 1):
+                parts = [f"  {i}. {h.name}"]
+                if h.price:
+                    parts.append(f"- {h.price}/night")
+                if h.rating:
+                    parts.append(f"- rating {h.rating}")
+                if h.stars:
+                    parts.append(f"- {h.stars} stars")
+                lines.append(" ".join(parts))
         if self.selected_hotel:
             lines.append(f"Selected: {self.selected_hotel.name}")
         return "\n".join(lines)

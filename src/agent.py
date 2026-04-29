@@ -8,7 +8,7 @@ from .prompts import build_system_prompt
 from .tools import TOOL_DEFINITIONS, execute_tool
 
 MODEL = "gemma4:31b"
-NUM_CTX = 8192
+NUM_CTX = 16384
 MAX_HISTORY_MESSAGES = 40  # sliding window: keep last N messages (excluding system)
 MAX_TOOL_ROUNDS = 5  # prevent infinite tool-call loops
 

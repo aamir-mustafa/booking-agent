@@ -45,15 +45,14 @@ def search_hotels(
     state.phase = BookingPhase.PRESENTING
 
     results = []
-    for i, h in enumerate(hotels[:10], 1):
+    for i, h in enumerate(hotels[:5], 1):
         results.append({
             "number": i,
             "name": h.name,
             "price_per_night": h.price,
             "rating": h.rating,
             "stars": h.stars,
-            "amenities": h.amenities[:6],
-            "property_token": h.property_token,
+            "amenities": h.amenities[:3],
         })
     return json.dumps({"hotels": results, "total_found": len(hotels)})
 
